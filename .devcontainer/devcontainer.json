@@ -3,13 +3,19 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "php",
   "workspaceFolder": "/var/www/app",
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    },
+    "extensions": [
+      "donjayamanne.githistory",
+      "eamodio.gitlens",
+      "felixfbecker.php-debug",
+      "bmewburn.vscode-intelephense-client"
+    ]
   },
-  "extensions": [
-    "felixfbecker.php-debug",
-    "bmewburn.vscode-intelephense-client"
-  ],
   "forwardPorts": [8000, 3306],
   "shutdownAction": "stopCompose"
 }

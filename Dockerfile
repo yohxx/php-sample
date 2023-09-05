@@ -1,7 +1,11 @@
-FROM php:8.0-apache
+FROM php:8.2-apache
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN apt -y update && \
+    apt -y install git && \
+    apt -y install curl && \
+    apt -y install vim
+
+RUN echo "alias ll='ls -al --color'" >> ~/.bashrc
 
 # Set the document root to /var/www/app and update permissions
 RUN sed -i 's!/var/www/html!/var/www/app!g' /etc/apache2/sites-available/000-default.conf \
@@ -10,3 +14,7 @@ RUN sed -i 's!/var/www/html!/var/www/app!g' /etc/apache2/sites-available/000-def
     AllowOverride All\n\
     Require all granted\n\
     </Directory>' >> /etc/apache2/sites-available/000-default.conf
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
