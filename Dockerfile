@@ -1,4 +1,5 @@
 FROM php:8.2-apache
+COPY . .
 
 RUN apt -y update && \
     apt -y install git && \
