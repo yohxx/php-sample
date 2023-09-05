@@ -2,7 +2,7 @@
   "name": "PHP Sample",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "php",
-  "workspaceFolder": "/var/www/app",
+  "workspaceFolder": "/var/www",
   "customizations": {
     "vscode": {
       "settings": {

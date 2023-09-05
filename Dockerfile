@@ -1,4 +1,5 @@
 FROM php:8.2-apache
+COPY . .
 
 RUN apt -y update && \
     apt -y install git && \
@@ -8,8 +9,7 @@ RUN apt -y update && \
 RUN echo "alias ll='ls -al --color'" >> ~/.bashrc
 
 # Set the document root to /var/www/app and update permissions
-RUN sed -i 's!/var/www/html!/var/www/app!g' /etc/apache2/sites-available/000-default.conf \
-    && echo '<Directory "/var/www/app">\n\
+RUN echo '<Directory "/var/www/app">\n\
     Options Indexes FollowSymLinks\n\
     AllowOverride All\n\
     Require all granted\n\
